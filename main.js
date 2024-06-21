@@ -10,6 +10,12 @@ function createMainWindow () {
         title: 'Image Resizer',
         width: isDev ? 1000: 500, //turnery statement to see if the dev tools are open and change the screen size accordingly
         height: 600,
+
+        webPreferences: {   //this allows node.js functionality to be used outside of the browser. 
+            contextIsolation: true,
+            nodeIntegration: true,
+            preload: path.join(__dirname, 'preload.js'),
+        }
     });
 
     // open the Dev tools if in dev environment
@@ -50,7 +56,8 @@ app.whenReady().then(()=> {
 
 // menu template, this sets up the tool bar menus 
 const menu = [
-    ...(isMac ? [{   // ... is a spread operator, 
+            // ... is a spread operator,  syntax allows an iterable, such as an array or string, to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected. Spread syntax can be used when all elements from an object or array need to be included in a new array or object.
+    ...(isMac ? [{   
         label: app.name,
         submenu: [
             {
