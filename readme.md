@@ -17,4 +17,4 @@ ctrl + shit + i opens up the dev tools in the open window
 tutorial link:
 https: www.youtube.com/watch?v=ML743nrkMHw&ab_channel=TraversyMedia
 link to the repo: 
-https: github.com/bradtraversy/image-resizer-electron
+[https: github.com/bradtraversy/image-resizer-electron](https://github.com/bradtraversy/image-resizer-electron)
