@@ -1,6 +1,5 @@
-const { ipcRenderer } = require("electron");
+//the renderer.js is responsible for the actual rendered functionality of the app
 
-// const { default: test } = require("node:test");
 const form = document.querySelector('#img-form');
 const img = document.querySelector('#img');
 const outputPath = document.querySelector('#output-path');
@@ -50,12 +49,17 @@ function sendImage(e) {
     }
 
     //Send to main using IPC renderer
-    ipcRenderer.send('image:reszie', {
+    ipcRenderer.send('image:resize', {
         imgPath,
         width,
         height,
     });
 }
+
+//catch the image:done event
+ipcRenderer.on('image:done', ()=> {
+    alertSuccess(`image resized to ${widthInput.value} x ${heightInput.value}`);
+})
 
 // Make sure that the file is an image
 function isFileImage(file) {
